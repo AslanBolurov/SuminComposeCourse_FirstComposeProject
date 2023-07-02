@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -18,27 +19,27 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            UserInfo(name="Aslan", age=31)
-
-        }
-    }
-}
-
-
-@Composable
-fun UserInfo(name: String, age:Int) {
-
-    Column {
-        repeat(10){
-            Text(text = "Hello $name! You are $age years old.")
         }
     }
 }
 
 @Preview
 @Composable
-fun UserInfoPreview(){
-    UserInfo("John", 25)
+fun TimesTable(){
+
+    Column {
+        for(i in 1 until 10) {
+            Row {
+                for(j in 1 until 10) {
+                    Text("$j")
+                }
+            }
+        }
+    }
+
+
 
 }
+
+
 
