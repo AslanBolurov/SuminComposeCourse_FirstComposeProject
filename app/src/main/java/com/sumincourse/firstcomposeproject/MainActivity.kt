@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,8 +27,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sumincourse.firstcomposeproject.ui.theme.FirstComposeProjectTheme
 import com.sumincourse.firstcomposeproject.ui.theme.InstagramProfileCard
 
@@ -50,31 +56,31 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun CardTest() {
+fun TextTest() {
 
-    Card(
-//        shape= RoundedCornerShape(8.dp)
-//        shape = RectangleShape
-//        shape= CircleShape
-        /* case 1
-        shape= RoundedCornerShape(4.dp).copy(
-            bottomStart = CornerSize(0.dp),
-            bottomEnd = CornerSize(0.dp),
-        )
-         */
-        //case2
-        shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.Green,
-            contentColor = Color.White
-        ),
-        border=BorderStroke(1.dp,Color.Black)
-    ) {
-        Text(
-            modifier = Modifier.padding(4.dp),
-            text = "Hello world!"
-        )
-    }
+    Text(
+        text = "Hello world!",
+        fontSize = 24.sp,
+        fontWeight = FontWeight.ExtraBold,
+//        fontStyle = FontStyle.Italic,
+
+        fontFamily = FontFamily.Cursive,
+//        fontFamily = FontFamily.Serif,
+//        fontFamily = FontFamily.SansSerif,
+
+        textDecoration = TextDecoration.Underline,
+//        textDecoration = TextDecoration.LineThrough,
+//        textDecoration = TextDecoration.combine(
+//            listOf(
+//                TextDecoration.Underline,
+//                TextDecoration.LineThrough
+//            )
+//        )
+
+
+
+
+    )
 
 
 }
