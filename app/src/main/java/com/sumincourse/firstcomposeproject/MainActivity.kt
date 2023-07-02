@@ -31,7 +31,7 @@ fun TimesTable(){
         for(i in 1 until 10) {
             Row {
                 for(j in 1 until 10) {
-                    Text("$j")
+                    Text("${i*j}")
                 }
             }
         }
