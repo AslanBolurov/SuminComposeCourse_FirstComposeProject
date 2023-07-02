@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
 fun UserInfo(name: String, age:Int) {
 
     Column {
-        for (i in 0 until 10){
+        repeat(10){
             Text(text = "Hello $name! You are $age years old.")
         }
     }
