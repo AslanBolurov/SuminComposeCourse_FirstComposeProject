@@ -3,6 +3,7 @@ package com.sumincourse.firstcomposeproject
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -26,8 +27,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun UserInfo(name: String, age:Int) {
-    Text(
-        text = "Hello $name! You are $age years old."
-    )
+
+    Column {
+        for (i in 0 until 10){
+            Text(text = "Hello $name! You are $age years old.")
+        }
+    }
+}
+
+@Preview
+@Composable
+fun UserInfoPreview(){
+    UserInfo("John", 25)
+
 }
 
