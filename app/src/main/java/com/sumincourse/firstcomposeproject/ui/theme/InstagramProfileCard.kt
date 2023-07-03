@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -47,34 +48,52 @@ fun InstagramProfileCard() {
         ),
 
         ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-//        horizontalArrangement = Arrangement.SpaceBetween
-//        horizontalArrangement = Arrangement.SpaceAround
-            verticalAlignment = Alignment.CenterVertically
+
+        Column(
+            modifier = Modifier.padding(16.dp)
         ) {
-
-            Image(
-                painterResource(R.drawable.ic_instagram),
-                contentDescription = "image",
-                modifier = Modifier
-                    .size(60.dp)
-                    .clip(CircleShape)
-                    .background(Color.White)
-                    .padding(8.dp)
+            InstaHead()
+            Text(
+                text = "Instagram",
+                fontSize = 32.sp,
+                fontFamily = FontFamily.Cursive
             )
+            Text(text = "#YoursToMake", fontSize = 14.sp)
+            Text(text = "Telegram/t.me/Aslan_Javasky", fontSize = 14.sp)
 
-            UserStatistics("Posts", "6,950")
-
-            UserStatistics("Followers", "436")
-
-            UserStatistics("Following", "76")
-
+            Button(onClick = {}) {
+                Text(text = "Follow")
+            }
 
         }
+    }
+}
+
+@Composable
+private fun InstaHead() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+//            .padding(8.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+//        horizontalArrangement = Arrangement.SpaceBetween
+//        horizontalArrangement = Arrangement.SpaceAround
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+        Image(
+            painterResource(R.drawable.ic_instagram),
+            contentDescription = "image",
+            modifier = Modifier
+                .size(60.dp)
+                .clip(CircleShape)
+                .background(Color.White)
+                .padding(8.dp)
+        )
+
+        UserStatistics("Posts", "6,950")
+        UserStatistics("Followers", "436")
+        UserStatistics("Following", "76")
     }
 }
 
