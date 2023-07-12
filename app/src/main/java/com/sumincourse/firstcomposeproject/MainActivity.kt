@@ -5,8 +5,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.sumincourse.firstcomposeproject.ui.theme.FirstComposeProjectTheme
@@ -16,21 +20,34 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel=ViewModelProvider(this)[MainViewModel::class.java]
+        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         setContent {
-            FirstComposeProjectTheme {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.background)
-                ) {
+            Test(viewModel)
+        }
+    }
+}
+
+@Composable
+private fun Test(viewModel: MainViewModel) {
+    FirstComposeProjectTheme {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            val scrollState= rememberScrollState()
+            Column(
+                modifier = Modifier.verticalScroll(scrollState)
+            ) {
+                repeat(100){
                     InstagramProfileCard(viewModel)
                 }
             }
         }
     }
 }
+
 
 
 
