@@ -13,15 +13,19 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.sumincourse.firstcomposeproject.ui.theme.FirstComposeProjectTheme
 import com.sumincourse.firstcomposeproject.ui.theme.InstagramProfileCard
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +49,10 @@ private fun Test(viewModel: MainViewModel) {
         ) {
 
             val models = viewModel.models.observeAsState(listOf())
+            val scope= rememberCoroutineScope()
+            val lazyListState = rememberLazyListState()
 
-            LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+            LazyColumn {
                 items(models.value) {
                     InstagramProfileCard(
                         model = it,
@@ -54,6 +60,15 @@ private fun Test(viewModel: MainViewModel) {
                     )
 
                 }
+            }
+            FloatingActionButton(
+                onClick = {
+                    scope.launch {
+                        lazyListState.scrollToItem(0)
+                    }
+                }
+            ) {
+
             }
         }
     }
